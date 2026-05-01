@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { MessageCircle, ChevronLeft, ChevronRight, Check, Building2, Cake, Lock, Star, Heart } from 'lucide-react';
+import { trackMetaEvent } from '../lib/metaEvents';
 
 const Button = ({ children, className = "", onClick, icon = true }: any) => (
   <button 
@@ -20,7 +21,12 @@ const Button = ({ children, className = "", onClick, icon = true }: any) => (
 const Home = () => {
   const whatsappLink = "https://wa.me/553194708831?text=Ol%C3%A1%21%20Gostaria%20de%20receber%20um%20or%C3%A7amento%20da%20Fly%20Drinks%20para%20meu%20evento.";
 
+  useEffect(() => {
+    trackMetaEvent("PageView");
+  }, []);
+
   const handleWhatsAppClick = () => {
+    trackMetaEvent("Contact");
     window.open(whatsappLink, '_blank');
   };
 

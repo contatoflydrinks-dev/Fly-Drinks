@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { trackMetaEvent } from '../lib/metaEvents';
 
 const TermsOfUse = () => {
+  useEffect(() => {
+    trackMetaEvent("PageView");
+  }, []);
   return (
     <div className="min-h-screen bg-[#f8f8f8] text-[#333] font-sans">
       <header className="bg-[#05261d] py-10">
